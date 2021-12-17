@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@700&display=swap');
+
+
+
+.card {
+    padding: 1% 7%;
+    color: #646771;
+    background-color: #16151a;
+
+}
+.policy>div {
+    padding: 4px
+}
+.divider {
+    border-top: 2px solid rgba(189, 196, 203, 0.5);
+}
+
+
+

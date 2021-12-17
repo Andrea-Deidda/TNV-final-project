@@ -1,0 +1,24 @@
+<div class="container p-5">
+    <h1 class="text-center mb-5">
+      The Movie Db API
+    </h1>
+  
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Original Language</th>
+          <th scope="col">Vote average</th>
+          <th scope="col">Release Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="pointer" *ngFor="let entry of resultsApi; let i = index">
+          <th scope="row"> {{entry.title}}</th>
+          <td>{{entry.original_language}}</td>
+          <td>{{entry.vote_average}}</td>
+          <td>{{entry.release_date | date}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

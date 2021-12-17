@@ -1,0 +1,36 @@
+<img class="hd" src="https://i.ibb.co/fx4KtWX/joker.jpg" alt="joker">
+
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom navbar-fixed-top sticky fontnav">
+
+  <div class="mobile" id="menuToggle">
+    <input type="checkbox" />
+    <span></span>
+    <span></span>
+    <span></span>
+    <ul class="choice-container" id="menu">
+      <li><a class="choice" [routerLink]="['/dashboard']">Home</a></li>
+
+      <li><a class="choice" [routerLink]="['/add']">Add</a></li>
+
+      <li><a class="choice" [routerLink]="['/login']">Login</a></li>
+    </ul>
+  </div>
+
+  <div class="container px-5 ">
+
+
+    <a class="navbar-brand fontnav" [routerLink]="['/dashboard']">The Net Fish</a>
+    <i class="fas fa-fish fishtohome" [routerLink]="['/dashboard']"></i>
+
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ms-auto">
+        <li class="fas fa-home icons" [routerLink]="['/dashboard']"></li>
+        <li class="fas fa-plus icons" [routerLink]="['/add']"></li>
+        <li class="fas fa-user icons" [routerLink]="['/login']"></li>
+        <li class="fas fa-filter icons" [routerLink]="['/filterbygenre']"></li>
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
