@@ -8,6 +8,7 @@ import { WelcomeComponent } from './routes/welcome/welcome.component';
 import { FilterByGenreComponent } from './routes/filter-by-genre/filter-by-genre.component';
 import { LoginComponent } from './routes/login/login.component';
 import { TheMovieApiComponent } from './routes/the-movie-api/the-movie-api.component';
+import { SuggestComponent } from './routes/suggest/suggest.component';
 
 
 const routes: Routes = [
@@ -19,7 +20,8 @@ const routes: Routes = [
   { path: "landingPage", component: WelcomeComponent},
   { path: "filterbygenre", component: FilterByGenreComponent},
   { path: "login", component: LoginComponent},
-  { path: "themovieapi", component: TheMovieApiComponent}
+  { path: "themovieapi", component: TheMovieApiComponent},
+  { path: "suggestmovie", component: SuggestComponent}
 ];
 
 @NgModule({

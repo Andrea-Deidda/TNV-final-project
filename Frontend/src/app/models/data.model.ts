@@ -34,3 +34,14 @@ export interface ResultInterface{
     vote_count: number
 
 }
+
+export interface MeteoApiInterface{
+    name: string,
+    main: MainInterface,
+}
+
+export interface MainInterface{
+    humidity: number,
+    temp: number,
+    pressure: number
+}

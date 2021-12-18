@@ -18,6 +18,7 @@ import { FilterByGenreComponent } from './routes/filter-by-genre/filter-by-genre
 import { FilterGenrePipe } from './pipes/filterGenre.pipe';
 import { LoginComponent } from './routes/login/login.component';
 import { TheMovieApiComponent } from './routes/the-movie-api/the-movie-api.component';
+import { SuggestComponent } from './routes/suggest/suggest.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { TheMovieApiComponent } from './routes/the-movie-api/the-movie-api.compo
     FilterByGenreComponent,
     FilterGenrePipe,
     LoginComponent,
-    TheMovieApiComponent
+    TheMovieApiComponent,
+    SuggestComponent
   ],
   imports: [
     BrowserModule,

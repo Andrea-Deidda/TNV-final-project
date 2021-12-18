@@ -1,0 +1,24 @@
+<div class="container p-5">
+    <h1 class="text-center mb-5">
+      The Net Fish
+    </h1>
+
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Provincia</th>
+          <th scope="col">Temperatura</th>
+          <th scope="col">Pressione</th>
+          <th scope="col">Umidità</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="pointer">
+          <td>{{meteo.name}}</td>
+          <td>{{(meteo.main.temp)}}</td>
+          <td>{{meteo.main.pressure}}hPa</td>
+          <td>{{meteo.main.humidity}}%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
