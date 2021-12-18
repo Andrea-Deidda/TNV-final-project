@@ -7,7 +7,7 @@ import { MeteoApiInterface } from '../models/data.model';
 })
 export class SuggestService {
   private baseUrl="https://api.openweathermap.org/data/2.5/weather?q="
-  private apiKey="&appid=e65730ad36513a7741d41f238b46b195"
+  private apiKey="KEY"
   
   constructor(private http: HttpClient) {}
 
