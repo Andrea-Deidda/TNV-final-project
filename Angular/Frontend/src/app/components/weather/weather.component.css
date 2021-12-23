@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&display=swap');
+
+html,
+body {
+    height: 50%
+}
+
+.card {
+    background-color: none;
+    border-radius: 20px;
+    color: rgb(73, 73, 73);
+    font-family: 'Poppins', sans-serif;
+    max-width: max-content;
+    max-height: max-content;
+
+}
+.color-icon{
+  color: blueviolet;
+}
+.card:hover{
+  transition: .2s;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+.temp {
+    place-items: center
+}
+
+.temp-details>p>span,
+.grey {
+    color: #a3acc1;
+    font-size: 12px;
+}
+
+*:focus {
+    outline: none;
+}
