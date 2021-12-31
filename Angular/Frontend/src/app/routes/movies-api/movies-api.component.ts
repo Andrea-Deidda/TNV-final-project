@@ -9,22 +9,18 @@ import { MoviesApiService } from 'src/app/services/moviesapi.service';
   templateUrl: './movies-api.component.html',
   styleUrls: ['./movies-api.component.css']
 })
+
 export class MoviesApiComponent implements OnInit {
 
+  //variabili MOVIES api
   movies: any;
   results: any[];
 
-  weatherFatherBis: currentWeatherInterface; //contiene tutti i dati meteo e previsioni
+  //variabili METEO api
+  weatherFatherBis: currentWeatherInterface;
   currentWeatherBis: ConditionsInterface[];
   data: any;
 
-  dataConditions: any;  //contiente dati condizioni attuali meteo
-
-  celsius: any; //contiene valore dati gradi
-  celsiusStringa: string;
-  city: string;
-
-  
   todaysWeather: string
 
   public weatherFather: currentWeatherFather;
@@ -37,28 +33,21 @@ export class MoviesApiComponent implements OnInit {
   pomeriggio: boolean = false
   sera: boolean = false
 
+  basicImageUrl: string = "https://image.tmdb.org/t/p/w185";
+
+  bigImagePath: string = "https://image.tmdb.org/t/p/w780";
+
   constructor(private apiService: MoviesApiService, private weatherService: WeatherService, private router: Router) { }
 
   ngOnInit(): void {
-    this.GetWeatherData();
     this.getMovieByCurrentWeather();
   }
-  GetWeatherData() {
-    this.city="newyork"
-    this.weatherService.getWeatherData(this.city).subscribe((
-      response: any) => {
-      this.weatherFatherBis = response;
-      this.dataConditions = this.weatherFatherBis.currentConditions;
-      this.celsius = ((this.dataConditions.temp - 32) * 5 / 9).toFixed(1); 
-    },
-      error => console.log(error)
-    )
-  }
+
 
   // METEO FUNZIONI
   getMovieByCurrentWeather() {
 
-    this.weatherService.getWeatherData(this.city).subscribe((
+    this.weatherService.getWeatherData("cagliari").subscribe((
       response: any) => {
       //se è andato tutto bene, allora:
       this.weatherFatherBis = response;
@@ -151,9 +140,11 @@ export class MoviesApiComponent implements OnInit {
     )
   }
 
+  //Prende i dati meteo dall'api
   getterWeatherDataOnComponent() {
-    this.weatherService.getWeatherData(this.city).subscribe((
+    this.weatherService.getWeatherData("cagliari").subscribe((
       response: any) => {
+      //se è andato tutto bene, allora:
       this.weatherFatherBis = response;
       console.log("weatherFatherBis: ", this.weatherFatherBis)
       this.data = this.weatherFatherBis.currentConditions;
@@ -167,7 +158,7 @@ export class MoviesApiComponent implements OnInit {
   }
 
   exGetterWeatherData() {
-    this.weatherService.getWeatherData(this.city).subscribe((
+    this.weatherService.getWeatherData("cagliari").subscribe((
       response: any) => {
       console.log("Previsioni meteo: ")
       this.weatherFather = response;
@@ -304,4 +295,10 @@ export class MoviesApiComponent implements OnInit {
       error => console.log(error)
     )
   }
+  //Al click visualizza i dettagli del film
+  goToDetails(id) {
+    this.router.navigateByUrl('/movieApiDetails/' + id);
+  }
+
 }
+

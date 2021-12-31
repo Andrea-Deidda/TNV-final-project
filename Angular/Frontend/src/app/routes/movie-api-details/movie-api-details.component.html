@@ -1,0 +1,40 @@
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet"/>
+  
+  <!-- CORPO -->
+  
+      <!--IMMAGINE FILM -->
+    <div class="content-img-text">
+  
+        <div class="boxImg">
+          <div class="title font" *ngIf="movieDetailsEntry != null">
+            <h1>{{ movieDetailsEntry.title }}</h1>
+          </div>
+        <img src="{{ imagePath }}" *ngIf="imagePath != null" class="shadowx img-fluid"/>
+      </div>
+  
+  <!-- TITOLO E DATI-->
+      <div class="box1">
+  
+        <div class="elm-cntr">
+          <div class="elements font" *ngIf="movieDetailsEntry != null">
+            <p><b>Release Date: </b> {{ movieDetailsEntry.release_date }}</p>
+          </div>
+          <div class="elements font" *ngIf="movieDetailsEntry != null">
+          </div>
+          <div class="elements font" *ngIf="movieDetailsEntry != null">
+            <p><b>Vote: </b> {{ movieDetailsEntry.vote_average }} </p>
+          </div>
+        </div>
+        <div class="elements poppins" *ngIf="movieDetailsEntry != null">
+          <p>{{ movieDetailsEntry.overview }}</p>
+        </div>
+  
+      </div>
+  
+    </div>
+  
+    <div class="">
+  
+  <div class="container1">
+
+  

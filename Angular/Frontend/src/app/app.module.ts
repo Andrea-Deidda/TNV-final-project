@@ -20,6 +20,7 @@ import { LoginComponent } from './routes/login/login.component';
 import { TheMovieApiComponent } from './routes/the-movie-api/the-movie-api.component';
 import { WeatherComponent } from './components/weather/weather.component';
 import { MoviesApiComponent } from './routes/movies-api/movies-api.component';
+import { MovieApiDetailsComponent } from './routes/movie-api-details/movie-api-details.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { MoviesApiComponent } from './routes/movies-api/movies-api.component';
     LoginComponent,
     TheMovieApiComponent,
     WeatherComponent,
-    MoviesApiComponent
+    MoviesApiComponent,
+    MovieApiDetailsComponent
   ],
   imports: [
     BrowserModule,
