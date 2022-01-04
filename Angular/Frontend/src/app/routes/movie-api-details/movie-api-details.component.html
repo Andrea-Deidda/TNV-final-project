@@ -1,7 +1,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet"/>
   
-  <!-- CORPO -->
-  
+
       <!--IMMAGINE FILM -->
     <div class="content-img-text">
   
@@ -36,5 +35,24 @@
     <div class="">
   
   <div class="container1">
+
+    <!--sezione rating -->
+
+    <!--sezione rating -->
+
+    <!--sezione commenti-->
+<div class="comment-wrapper">
+  <form class="" (ngSubmit)="onSubmit(formDue)" #formDue="ngForm">
+      <div class="form-group row">
+              <textarea  class="form-control style-text-area" id="body" required ngModel name="body" placeholder=" comment movie">
+                </textarea>
+      </div>
+      <button type="submit" (click)="reloadPage()" class="btn buttons btn-primary btn-cmt ml-3" required>Submit Comment</button>
+  </form>
+</div>
+  <br>
+  <hr>
+
+<!--fine sezione commenti-->
 
   

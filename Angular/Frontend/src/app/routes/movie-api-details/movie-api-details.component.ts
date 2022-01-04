@@ -1,3 +1,4 @@
+import { CommentsService } from './../../services/comments.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -5,6 +6,7 @@ import { MovieData, ResultInterface } from 'src/app/models/data.model';
 import { DataService } from 'src/app/services/data.service';
 import { ApiPictureService } from '../../services/api-picture.service';
 import { MoviesApiService } from '../../services/moviesapi.service';
+import { CommentsInterface } from '../../models/comments.model';
 
 @Component({
   selector: 'app-movie-api-details',
@@ -14,7 +16,8 @@ import { MoviesApiService } from '../../services/moviesapi.service';
 export class MovieApiDetailsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private movieApiService: MoviesApiService,
-    private pictureService: ApiPictureService, private router: Router, private dataService: DataService) { }
+    private pictureService: ApiPictureService, private router: Router, private dataService: DataService,
+    private commentsService: CommentsService) { }
 
   // RATINGS
   //ratings: MovieRatingsInterface; // ottiene dati in arrivo da getMovieRatingsOnComponent
@@ -37,11 +40,11 @@ export class MovieApiDetailsComponent implements OnInit {
 
   // ID USER
   username: string = sessionStorage.getItem('username');
-  userId: number;
+  userId=1;
   user: any;
 
   // COMMENTI
- 
+  dataEntry: CommentsInterface;
   movies: MovieData[];
   casa: number;
 
@@ -91,7 +94,7 @@ export class MovieApiDetailsComponent implements OnInit {
   }
 
 
-  //-----------------------COMMENTS--------------------------//
+  //-----------------------SEZIONE COMMENTI --------------------------//
   
   getMovies() {
     this.dataService.getData().subscribe((response: any) => {
@@ -102,6 +105,20 @@ export class MovieApiDetailsComponent implements OnInit {
 
   onSubmit(form: NgForm) {
 
+    this.dataEntry = form.form.value;
+    console.log(form);
+    console.log(this.dataEntry);
+    console.log(this.userId);
+    console.log(this.id);
+    this.userId+=1;
+    this.commentsService.addComment(this.userId, this.id, this.dataEntry).subscribe(
+      response => {
+        console.log(response);
+        this.router.navigate(["/movieApiDetails/791373"]);
+      },
+      error =>
+        alert(error.error.message)
+    )
   }
 
   reloadPage() {
