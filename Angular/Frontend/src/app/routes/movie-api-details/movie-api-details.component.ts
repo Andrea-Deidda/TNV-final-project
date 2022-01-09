@@ -47,6 +47,7 @@ export class MovieApiDetailsComponent implements OnInit {
   dataEntry: CommentsInterface;
   movies: MovieData[];
   casa: number;
+  comments: CommentsInterface[];
 
   //LISTA VISTO/DA VEDERE
   movieFilm = <MovieData>{};
@@ -62,6 +63,7 @@ export class MovieApiDetailsComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
     this.getMovieApiDetails();
     this.getMovies();
+    this.getEntries();
   }
 
   // Funzione che prende il campo scelto nel form Film da vedere e lo aggiunge al database The Net Fish
@@ -95,7 +97,19 @@ export class MovieApiDetailsComponent implements OnInit {
 
 
   //-----------------------SEZIONE COMMENTI --------------------------//
-  
+
+  getEntries() {
+    this.commentsService.getComments().subscribe(
+      response => {
+        //se è andato tutto bene, allora:
+        //console.log("ho ottenuto i dati!");
+        this.comments = response;
+        //console.log(this.comments);
+      },
+      error => console.log(error)
+    )
+  }
+
   getMovies() {
     this.dataService.getData().subscribe((response: any) => {
       this.movies = response;
@@ -110,7 +124,7 @@ export class MovieApiDetailsComponent implements OnInit {
     console.log(this.dataEntry);
     console.log(this.userId);
     console.log(this.id);
-    this.userId+=1;
+    this.userId=3;
     this.commentsService.addComment(this.userId, this.id, this.dataEntry).subscribe(
       response => {
         console.log(response);

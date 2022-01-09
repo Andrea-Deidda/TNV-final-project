@@ -7,25 +7,25 @@
     margin-bottom: 1%;
     margin-top: 18%;
   }
-  
+
   .container1 {
     display: flex;
     flex-direction: column;
   }
-  
+
   .content-img-text{
     display: flex;
     flex-direction: row;
     margin-bottom: 0%;
     margin-top: 0%;
-  } 
+  }
 
   .boxImg {
     margin-left: 5%;
     margin-bottom: 5%;
     flex: 1;
   }
-  
+
   .box1 {
     max-width: 800px;
     font-size: 20px;
@@ -33,7 +33,7 @@
     margin-right: 4%;
     flex: 1;
   }
-  
+
 
 
 .title {
@@ -43,31 +43,66 @@
     color: #343a40;
     font-weight: 500;
   }
-  
+
   .comment-wrapper{
     margin-left: 5%;
-    
+
   }
-  
+
   .form-group {
     height: 150px;
     max-width: 800px;
     }
-  
 
-  
+    .container-AllComments{
+      margin-bottom: 5%;
+      margin-top: 30px;
+      margin-left: 5.5%;
+      max-width: 775px;
+      background-color: rgba(131, 128, 128, 0.22);
+      border-radius: 3px;
+      border: 1px solid rgba(95, 93, 93, 0.22);
+    }
 
-  
+    .mb-2 {
+      margin-left: 5.5%;
+      margin-top: 20px;
+      font-family:"DK Lemon Yellow Sun";
+      font-size: 35px;
+      padding-bottom: 10px;
+    }
 
-  
+    .body-comments {
+      font-family: "Poppins", sans-serif;
+      font-size: 16px;
+      font-weight: 100;
+      color:rgba(0, 0, 0, 0.63);
+      padding-left: 15px;
+    }
 
-  
+    .body-user {
+      font-family:"Poppins", sans-serif;
+      color: rgba(216, 145, 13, 0.4);
+      font-size: 18px;
+      padding-bottom: 20px;
+      text-decoration: none;
+      border-right: 1px solid rgba(0, 0, 0, 0.4);
+      max-width: 40px;
+    }
 
 
-  
 
-  
- 
-  
 
-  
+
+
+
+
+
+
+
+
+
+
+
+
+

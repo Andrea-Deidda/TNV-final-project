@@ -21,6 +21,7 @@ import { TheMovieApiComponent } from './routes/the-movie-api/the-movie-api.compo
 import { WeatherComponent } from './components/weather/weather.component';
 import { MoviesApiComponent } from './routes/movies-api/movies-api.component';
 import { MovieApiDetailsComponent } from './routes/movie-api-details/movie-api-details.component';
+import { CommentsByMovieIdPipe } from './pipes/commentsByMovieId.pipe';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { MovieApiDetailsComponent } from './routes/movie-api-details/movie-api-d
     TheMovieApiComponent,
     WeatherComponent,
     MoviesApiComponent,
-    MovieApiDetailsComponent
+    MovieApiDetailsComponent,
+    CommentsByMovieIdPipe
   ],
   imports: [
     BrowserModule,
