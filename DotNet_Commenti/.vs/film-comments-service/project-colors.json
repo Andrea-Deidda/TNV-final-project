@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "de5c7c24-bda0-433a-87af-c937398c5f9d": {
+      "ProjectGuid": "de5c7c24-bda0-433a-87af-c937398c5f9d",
+      "DisplayName": "FilmComments.DB",
+      "ColorIndex": 0
+    },
+    "c52be6b6-a191-465c-b27c-7a621be21273": {
+      "ProjectGuid": "c52be6b6-a191-465c-b27c-7a621be21273",
+      "DisplayName": "FilmComments.RestAPIs",
+      "ColorIndex": 1
+    },
+    "b40f5f93-c833-4278-ae33-11c647021de6": {
+      "ProjectGuid": "b40f5f93-c833-4278-ae33-11c647021de6",
+      "DisplayName": "FilmComments.Core",
+      "ColorIndex": 2
+    }
+  },
+  "NextColorIndex": 3
+}

@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\FilmComments.DB",
+    "\\src\\FilmComments.DB\\BL",
+    "\\src\\FilmComments.DB\\Mappers",
+    "\\src\\FilmComments.DB\\Model",
+    "\\src\\FilmComments.RestAPIs",
+    "\\src\\FilmComments.RestAPIs\\Controllers",
+    "\\src\\FilmComments.RestAPIs\\Model",
+    "\\src\\FilmComments.RestAPIs\\obj"
+  ],
+  "SelectedNode": "\\src\\FilmComments.DB\\DbContextManager.cs",
+  "PreviewInSolutionExplorer": false
+}

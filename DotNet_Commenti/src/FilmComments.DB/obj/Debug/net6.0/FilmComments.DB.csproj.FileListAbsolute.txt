@@ -1,0 +1,17 @@
+C:\Users\Andrea\Documents\Progetto_Finale_Team_For_Each-main\DotNet_Commenti\src\FilmComments.DB\bin\Debug\net6.0\FilmComments.DB.deps.json
+C:\Users\Andrea\Documents\Progetto_Finale_Team_For_Each-main\DotNet_Commenti\src\FilmComments.DB\bin\Debug\net6.0\FilmComments.DB.runtimeconfig.json
+C:\Users\Andrea\Documents\Progetto_Finale_Team_For_Each-main\DotNet_Commenti\src\FilmComments.DB\bin\Debug\net6.0\FilmComments.DB.dll
+C:\Users\Andrea\Documents\Progetto_Finale_Team_For_Each-main\DotNet_Commenti\src\FilmComments.DB\bin\Debug\net6.0\ref\FilmComments.DB.dll
+C:\Users\Andrea\Documents\Progetto_Finale_Team_For_Each-main\DotNet_Commenti\src\FilmComments.DB\bin\Debug\net6.0\FilmComments.DB.pdb
+C:\Users\Andrea\Documents\Progetto_Finale_Team_For_Each-main\DotNet_Commenti\src\FilmComments.DB\bin\Debug\net6.0\FilmComments.Core.dll
+C:\Users\Andrea\Documents\Progetto_Finale_Team_For_Each-main\DotNet_Commenti\src\FilmComments.DB\bin\Debug\net6.0\FilmComments.Core.pdb
+C:\Users\Andrea\Documents\Progetto_Finale_Team_For_Each-main\DotNet_Commenti\src\FilmComments.DB\obj\Debug\net6.0\FilmComments.DB.csproj.AssemblyReference.cache
+C:\Users\Andrea\Documents\Progetto_Finale_Team_For_Each-main\DotNet_Commenti\src\FilmComments.DB\obj\Debug\net6.0\FilmComments.DB.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Andrea\Documents\Progetto_Finale_Team_For_Each-main\DotNet_Commenti\src\FilmComments.DB\obj\Debug\net6.0\FilmComments.DB.AssemblyInfoInputs.cache
+C:\Users\Andrea\Documents\Progetto_Finale_Team_For_Each-main\DotNet_Commenti\src\FilmComments.DB\obj\Debug\net6.0\FilmComments.DB.AssemblyInfo.cs
+C:\Users\Andrea\Documents\Progetto_Finale_Team_For_Each-main\DotNet_Commenti\src\FilmComments.DB\obj\Debug\net6.0\FilmComments.DB.csproj.CoreCompileInputs.cache
+C:\Users\Andrea\Documents\Progetto_Finale_Team_For_Each-main\DotNet_Commenti\src\FilmComments.DB\obj\Debug\net6.0\FilmComments.DB.csproj.CopyComplete
+C:\Users\Andrea\Documents\Progetto_Finale_Team_For_Each-main\DotNet_Commenti\src\FilmComments.DB\obj\Debug\net6.0\FilmComments.DB.dll
+C:\Users\Andrea\Documents\Progetto_Finale_Team_For_Each-main\DotNet_Commenti\src\FilmComments.DB\obj\Debug\net6.0\ref\FilmComments.DB.dll
+C:\Users\Andrea\Documents\Progetto_Finale_Team_For_Each-main\DotNet_Commenti\src\FilmComments.DB\obj\Debug\net6.0\FilmComments.DB.pdb
+C:\Users\Andrea\Documents\Progetto_Finale_Team_For_Each-main\DotNet_Commenti\src\FilmComments.DB\obj\Debug\net6.0\FilmComments.DB.genruntimeconfig.cache
