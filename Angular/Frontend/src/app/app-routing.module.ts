@@ -6,10 +6,10 @@ import { DetailsComponent } from './routes/details/details.component';
 import { EditComponent } from './routes/edit/edit.component';
 import { WelcomeComponent } from './routes/welcome/welcome.component';
 import { FilterByGenreComponent } from './routes/filter-by-genre/filter-by-genre.component';
-import { LoginComponent } from './routes/login/login.component';
 import { TheMovieApiComponent } from './routes/the-movie-api/the-movie-api.component';
 import { MoviesApiComponent } from './routes/movies-api/movies-api.component';
 import { MovieApiDetailsComponent } from './routes/movie-api-details/movie-api-details.component';
+import { LoginPageComponent } from './routes/login-page/login-page.component';
 
 
 
@@ -21,10 +21,10 @@ const routes: Routes = [
   { path: "edit/:id", component: EditComponent },
   { path: "landingPage", component: WelcomeComponent},
   { path: "filterbygenre", component: FilterByGenreComponent},
-  { path: "login", component: LoginComponent},
   { path: "themovieapi", component: TheMovieApiComponent},
   { path: "movieapi", component:MoviesApiComponent},
-  { path: "movieApiDetails/:id", component: MovieApiDetailsComponent}
+  { path: "movieApiDetails/:id", component: MovieApiDetailsComponent},
+  { path: "login", component:LoginPageComponent}
 ];
 
 @NgModule({

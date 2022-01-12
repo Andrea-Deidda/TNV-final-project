@@ -16,12 +16,13 @@ import { LoadingScreenComponent } from './components/loading-screen/loading-scre
 import { WelcomeComponent } from './routes/welcome/welcome.component';
 import { FilterByGenreComponent } from './routes/filter-by-genre/filter-by-genre.component';
 import { FilterGenrePipe } from './pipes/filterGenre.pipe';
-import { LoginComponent } from './routes/login/login.component';
 import { TheMovieApiComponent } from './routes/the-movie-api/the-movie-api.component';
 import { WeatherComponent } from './components/weather/weather.component';
 import { MoviesApiComponent } from './routes/movies-api/movies-api.component';
 import { MovieApiDetailsComponent } from './routes/movie-api-details/movie-api-details.component';
 import { CommentsByMovieIdPipe } from './pipes/commentsByMovieId.pipe';
+import { LoginPageComponent } from './routes/login-page/login-page.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 @NgModule({
@@ -37,12 +38,13 @@ import { CommentsByMovieIdPipe } from './pipes/commentsByMovieId.pipe';
     WelcomeComponent,
     FilterByGenreComponent,
     FilterGenrePipe,
-    LoginComponent,
     TheMovieApiComponent,
     WeatherComponent,
     MoviesApiComponent,
     MovieApiDetailsComponent,
-    CommentsByMovieIdPipe
+    CommentsByMovieIdPipe,
+    LoginPageComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
