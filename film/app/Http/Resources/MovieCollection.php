@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class RatingCollection extends ResourceCollection
+class MovieCollection extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.
@@ -16,8 +16,8 @@ class RatingCollection extends ResourceCollection
     {
         return [
             'data' => $this->collection,
-            'Author' => 'Ninja Turtles',
-            'version' => '1.0'
-        ];
+            'Author' => 'Andrea Deidda',
+            'version' => '1.0.0'
+    ];
     }
 }

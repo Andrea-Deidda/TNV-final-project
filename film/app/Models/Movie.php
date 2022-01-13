@@ -5,9 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Rating extends Model
+class Movie extends Model
 {
-    use HasFactory;
+    protected $fillable = ['movie_rating', 'movie_id', 'user_id'];
 
-    protected $fillable = ['movie_rating', 'user_id', 'movie_id'];
 }

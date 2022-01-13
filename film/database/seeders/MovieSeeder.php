@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Rating;
+use App\Models\Movie;
 use Illuminate\Database\Seeder;
 
-class RatingSeeder extends Seeder
+class MovieSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +14,6 @@ class RatingSeeder extends Seeder
      */
     public function run()
     {
-        Rating::factory()->times(50)->create();
+        Movie::factory()->times(50)->create();
     }
 }

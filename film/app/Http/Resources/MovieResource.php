@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class RatingResource extends JsonResource
+class MovieResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,6 +15,7 @@ class RatingResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'id' => $this->id,
             'movie_rating' => $this->movie_rating,
             'movie_id' => $this->movie_id,
             'user_id' => $this->user_id
