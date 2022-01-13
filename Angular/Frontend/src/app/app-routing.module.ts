@@ -13,6 +13,7 @@ import { LoginPageComponent } from './routes/login-page/login-page.component';
 
 
 
+
 const routes: Routes = [
   { path: "", redirectTo : '/landingPage', pathMatch: 'full' },
   { path: "dashboard", component : DashboardComponent },
@@ -24,7 +25,7 @@ const routes: Routes = [
   { path: "themovieapi", component: TheMovieApiComponent},
   { path: "movieapi", component:MoviesApiComponent},
   { path: "movieApiDetails/:id", component: MovieApiDetailsComponent},
-  { path: "login", component:LoginPageComponent}
+  { path: "login-page", component:LoginPageComponent}
 ];
 
 @NgModule({

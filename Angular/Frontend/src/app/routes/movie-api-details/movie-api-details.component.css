@@ -90,9 +90,28 @@
       max-width: 40px;
     }
 
+/*rating*/
+.box2 {
+  margin-left: 5%;
+  flex: 1;
+}
 
+.star-container {
+  font-size: 22px;
+  color: rgb(218, 192, 47);
+  padding: none;
+  }
 
+  .container-rating {
+    display: flex;
+    flex-direction: column;
+  
+  }
 
+  .box2 {
+    margin-left: 5%;
+    flex: 1;
+  }
 
 
 

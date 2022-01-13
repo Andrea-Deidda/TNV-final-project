@@ -37,8 +37,24 @@
   <div class="container1">
 
     <!--sezione rating -->
+<div class="box2">
+  <form class="" (ngSubmit)="onSubmitRating(form)" #form="ngForm">
+<!-- MOVIE RATINGS-->
+    <div class="container-rating">
+      <div class="box-1a">
+        <ngb-rating class="star-container" [max]="5" ngModel name="movie_rating" id="movie_rating"  required></ngb-rating>
 
-    <!--sezione rating -->
+      </div>
+      <div class="box-2a">
+        <button
+          class="btn btn-primary  buttons" [disabled]="!form.valid"
+          class="btn btn-success buttons">Submit Rating</button>
+      </div>
+    </div>
+    <hr>
+  </form>
+</div>
+    <!--fine sezione rating -->
 
     <!--sezione commenti-->
 <div class="comment-wrapper">

@@ -22,7 +22,6 @@ import { MoviesApiComponent } from './routes/movies-api/movies-api.component';
 import { MovieApiDetailsComponent } from './routes/movie-api-details/movie-api-details.component';
 import { CommentsByMovieIdPipe } from './pipes/commentsByMovieId.pipe';
 import { LoginPageComponent } from './routes/login-page/login-page.component';
-import { LoginComponent } from './components/login/login.component';
 
 
 @NgModule({
@@ -43,8 +42,7 @@ import { LoginComponent } from './components/login/login.component';
     MoviesApiComponent,
     MovieApiDetailsComponent,
     CommentsByMovieIdPipe,
-    LoginPageComponent,
-    LoginComponent
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,

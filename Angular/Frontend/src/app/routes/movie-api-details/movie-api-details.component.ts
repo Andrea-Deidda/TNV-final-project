@@ -1,3 +1,4 @@
+import { MovieRatingService } from './../../services/movieRatings/movie-ratings.service';
 import { CommentsService } from './../../services/comments.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -7,6 +8,8 @@ import { DataService } from 'src/app/services/data.service';
 import { ApiPictureService } from '../../services/api-picture.service';
 import { MoviesApiService } from '../../services/moviesapi.service';
 import { CommentsInterface } from '../../models/comments.model';
+import { VERSION } from '@angular/core';
+import { MovieRatingsArrayInterface, MovieRatingsInterface } from 'src/app/models/movie-ratings.model';
 
 @Component({
   selector: 'app-movie-api-details',
@@ -17,19 +20,19 @@ export class MovieApiDetailsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private movieApiService: MoviesApiService,
     private pictureService: ApiPictureService, private router: Router, private dataService: DataService,
-    private commentsService: CommentsService) { }
+    private commentsService: CommentsService, private movieRatingService: MovieRatingService) { }
 
   // RATINGS
-  //ratings: MovieRatingsInterface; // ottiene dati in arrivo da getMovieRatingsOnComponent
-  //result: MovieRatingsArrayInterface[]; // Array Modello Movie-Ratings.model
-  //ratingEntry: MovieRatingsArrayInterface; // prende i dati di un rating entry da parte si user
+  ratings: MovieRatingsInterface; // ottiene dati in arrivo da getMovieRatingsOnComponent
+  result: MovieRatingsArrayInterface[]; // Array Modello Movie-Ratings.model
+  ratingEntry: MovieRatingsArrayInterface; // prende i dati di un rating entry da parte si user
   currentRating: number;                  // tiene il valore del rating
-  //newRating: MovieRatingsArrayInterface;  // tiene il valore di un nuovo rating
-  //starRating: MovieRatingsArrayInterface;
+  newRating: MovieRatingsArrayInterface;  // tiene il valore di un nuovo rating
+  starRating: MovieRatingsArrayInterface;
   movie_rating_id: number;
-  //ratingSubmit: MovieRatingsArrayInterface;
+  ratingSubmit: MovieRatingsArrayInterface;
   ratedOptions = ['1', '2', '3', '4', '5'];   // stabilisce i valori disponibili per il rating da 1 a 5 (come il numero di stelle)
-  //name = "Angular " + VERSION.major;          // utlie per il fnzionamento delle star
+  name = "Angular " + VERSION.major;          // utlie per il fnzionamento delle star
 
   // IMMAGINI
   imagePath: string
@@ -62,15 +65,32 @@ export class MovieApiDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     this.getMovieApiDetails();
-    this.getMovies();
+    this.getMovieRating();
     this.getEntries();
+    this.getMovies();
+    
+    
   }
 
   // Funzione che prende il campo scelto nel form Film da vedere e lo aggiunge al database The Net Fish
   onSeen(form: NgForm) { };
 
-    //costrutto che permette di fare la Add o la PUT a seconda se il film è già presente nel BD o meno
+  onSubmitRating(form: NgForm) {
+    form.form.value.movie_id = this.movieDetailsEntry.id,
+      form.form.value.user_id = 1
+    //form.form.value.currentRating = parseInt(form.form.value.currentRating);
+    form.form.value.movie_rating = parseInt(form.form.value.movie_rating);
+    this.ratingSubmit = form.form.value;
+    console.log("RISULTATI RATING", this.ratingSubmit);
+    this.movieRatingService.addMovieRating(this.ratingSubmit).subscribe(response => {
 
+    },
+      (err) => {
+        //fai qualcosa
+        console.log(err)
+      }
+    )
+  }
   // chiama e alloca l ordine corretto degli indirizzi per recupero immagini da api
   getMovieApiDetails() {
     this.movieApiService.getMovieById(this.id).subscribe((res: any) => {
@@ -95,6 +115,15 @@ export class MovieApiDetailsComponent implements OnInit {
     return this.mainUrl + this.movieDetailsEntry.backdrop_path;
   }
 
+  getMovieRating() {
+    this.movieRatingService.getratingsByMovieId(this.id).subscribe(
+      response => {
+        this.ratings = response;
+        this.ratingEntry = this.ratings.data[0];
+      },
+      error => console.log(error)
+    )
+  }
 
   //-----------------------SEZIONE COMMENTI --------------------------//
 
