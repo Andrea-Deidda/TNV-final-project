@@ -40,9 +40,9 @@ export class EditComponent implements OnInit {
   onSubmit(){
     console.log(this.dataEntry);
     if(this.ratedOptionSelected =='yes'){
-      this.dataEntry.rated=true;
+      //this.dataEntry.rated=true;
     }else{
-      this.dataEntry.rated=false;
+      //this.dataEntry.rated=false;
     }
 
     this.dataService.editEntry(this.dataEntry)

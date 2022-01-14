@@ -30,9 +30,9 @@ export class AddComponent implements OnInit {
     console.log(this.dataEntry);
 
     if(form.form.value.rated==='yes'){
-      this.dataEntry.rated=true;
+      //this.dataEntry.rated=true;
     }else{
-      this.dataEntry.rated=false;
+      //this.dataEntry.rated=false;
     }
 
     this.dataService.addEntry(this.dataEntry).subscribe(response => {

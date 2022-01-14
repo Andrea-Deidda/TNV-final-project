@@ -19,7 +19,7 @@ export class TheMovieApiComponent implements OnInit {
       response => {
         this.movies = response;
         console.log(this.movies)
-        this.resultsApi = this.movies.results;
+        //this.resultsApi = this.movies.results;
       },
       err => console.log(err)
     )
