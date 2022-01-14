@@ -113,6 +113,11 @@
     flex: 1;
   }
 
+  .form-groupList {
+    transition: .3s;
+    max-width: 50%;
+  }
+
 
 
 

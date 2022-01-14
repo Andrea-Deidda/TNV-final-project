@@ -7,7 +7,7 @@ import { MovieData } from '../models/data.model';
 export class FilterGenrePipe implements PipeTransform {
 
   transform(movies: MovieData[], genre: string): MovieData[] {
-    if(movies.length>0){
+    /*if(movies.length>0){
       let finalArray : MovieData[] = [];
       for(let i=0; i<movies.length;i++){
         if(movies[i].genre == genre){
@@ -15,7 +15,7 @@ export class FilterGenrePipe implements PipeTransform {
         }
       }
       return finalArray;
-    }
+    }*/
     return null;
   }
 

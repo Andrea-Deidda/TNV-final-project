@@ -6,11 +6,13 @@ module.exports = (sequelize, DataType) => {
     name:  DataType.STRING(100),
     cast: DataType.STRING(100),
     director: DataType.STRING(100),
-    genre: DataType.STRING(100),
     rated: DataType.BOOLEAN(1),
-    reviews: DataType.STRING(100),
-    evaluation: DataType.INTEGER(1),
-    releaseDate: DataType.INTEGER(12)
+    reviews: DataType.STRING(10000),
+    evaluation: DataType.INTEGER(100),
+    user_id: DataType.INTEGER(100),
+    movie_id: DataType.INTEGER(100),
+    seen: DataType.BOOLEAN(1),
+    must_see: DataType.BOOLEAN(1)
   }, {
     freezeTableName: true,
     timestamps: false,
@@ -24,3 +26,4 @@ module.exports = (sequelize, DataType) => {
 
   return DataEntry;
 };
+
