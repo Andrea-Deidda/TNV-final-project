@@ -2,6 +2,7 @@ import { UserDataInterface } from './../../models/user.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +10,12 @@ import { map } from 'rxjs/operators';
 export class LoginService {
 
   private baseURL = 'http://localhost:8080/utenti';
+  public isLoggedIn: BehaviorSubject<boolean>
+  constructor(private http : HttpClient) {
+    const isLogged=sessionStorage.getItem("isLoggedIn")==='true';
+    this.isLoggedIn=new BehaviorSubject(isLogged);
 
-  constructor(private http : HttpClient) { }
+  }
 
   public login(usernameAuth:string, passwordAuth:string){
     const headers=new HttpHeaders({
@@ -31,7 +36,7 @@ export class LoginService {
   }
 //Effettua il logout dell'utente dalla sessione
   logOut() {
-    sessionStorage.removeItem('username')
+    sessionStorage.clear()
   }
 //visualizza la lista di tutti gli utenti presenti nel database
   public getUsers(usernameAuth:string, passwordAuth:string){

@@ -1,40 +1,42 @@
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet" />
+<div *ngIf="!(loginService.isLoggedIn | async)">
+  <app-login></app-login>
+</div>
+<div *ngIf="loginService.isLoggedIn | async">
+  <!--IMMAGINE FILM -->
+  <div class="content-img-text">
 
-
-      <!--IMMAGINE FILM -->
-    <div class="content-img-text">
-
-        <div class="boxImg">
-          <div class="title font" *ngIf="movieDetailsEntry != null">
-            <h1>{{ movieDetailsEntry.title }}</h1>
-          </div>
-        <img src="{{ imagePath }}" *ngIf="imagePath != null" class="shadowx img-fluid"/>
+    <div class="boxImg">
+      <div class="title font" *ngIf="movieDetailsEntry != null">
+        <h1>{{ movieDetailsEntry.title }}</h1>
       </div>
+      <img src="{{ imagePath }}" *ngIf="imagePath != null" class="shadowx img-fluid" />
+    </div>
 
-  <!-- TITOLO E DATI-->
-      <div class="box1">
+    <!-- TITOLO E DATI-->
+    <div class="box1">
 
-        <div class="elm-cntr">
-          <div class="elements font" *ngIf="movieDetailsEntry != null">
-            <p><b>Release Date: </b> {{ movieDetailsEntry.release_date }}</p>
-          </div>
-          <div class="elements font" *ngIf="movieDetailsEntry != null">
-          </div>
-          <div class="elements font" *ngIf="movieDetailsEntry != null">
-            <p><b>Vote: </b> {{ movieDetailsEntry.vote_average }} </p>
-          </div>
+      <div class="elm-cntr">
+        <div class="elements font" *ngIf="movieDetailsEntry != null">
+          <p><b>Release Date: </b> {{ movieDetailsEntry.release_date }}</p>
         </div>
-        <div class="elements poppins" *ngIf="movieDetailsEntry != null">
-          <p>{{ movieDetailsEntry.overview }}</p>
+        <div class="elements font" *ngIf="movieDetailsEntry != null">
         </div>
-
+        <div class="elements font" *ngIf="movieDetailsEntry != null">
+          <p><b>Vote: </b> {{ movieDetailsEntry.vote_average }} </p>
+        </div>
+      </div>
+      <div class="elements poppins" *ngIf="movieDetailsEntry != null">
+        <p>{{ movieDetailsEntry.overview }}</p>
       </div>
 
     </div>
 
-    <div class="">
+  </div>
 
-  <div class="container1">
+  <div class="">
+
+    <div class="container1">
 
     <!--sezione rating -->
 <div class="box2">
@@ -56,36 +58,39 @@
 </div>
     <!--fine sezione rating -->
 
-    <!--sezione commenti-->
-<div class="comment-wrapper">
-  <form class="" (ngSubmit)="onSubmit(formDue)" #formDue="ngForm">
-      <div class="form-group row">
-              <textarea  class="form-control style-text-area" id="body" required ngModel name="body" placeholder=" comment movie">
+      <!--sezione commenti-->
+      <div class="comment-wrapper">
+        <form class="" (ngSubmit)="onSubmit(formDue)" #formDue="ngForm">
+          <div class="form-group row">
+            <textarea class="form-control style-text-area" id="body" required ngModel name="body"
+              placeholder=" comment movie">
                 </textarea>
+          </div>
+          <button type="submit" (click)="reloadPage()" class="btn buttons btn-primary btn-cmt ml-3" required>Submit
+            Comment</button>
+        </form>
       </div>
-      <button type="submit" (click)="reloadPage()" class="btn buttons btn-primary btn-cmt ml-3" required>Submit Comment</button>
-  </form>
+      <br>
+      <hr>
+
+      <!--fine sezione commenti-->
+
+      <!-- INIZIO TUTTI COMMENTI -->
+      <h1 class=" mb-2">Movie Comments</h1>
+      <div class="container-AllComments p-2">
+        <table class="table">
+          <tbody>
+            <tr class="pointer" *ngFor="let entry of comments | commentsByMovieId : id">
+              <td class="body-user"><i class="fas fa-user-edit mr-2"></i>{{entry.userId}} </td>
+              <td class="body-comments"> {{entry.body}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+    </div>
+
+  </div>
+  <!-- FINE CONTAINER-->
 </div>
-  <br>
-  <hr>
-
-<!--fine sezione commenti-->
-
-<!-- INIZIO TUTTI COMMENTI -->
-<h1 class=" mb-2">Movie Comments</h1>
-<div class="container-AllComments p-2" >
-  <table class="table">
-    <tbody>
-      <tr class="pointer" *ngFor="let entry of comments | commentsByMovieId : id">
-        <td class="body-user"><i class="fas fa-user-edit mr-2"></i>{{entry.userId}} </td>
-        <td class="body-comments"> {{entry.body}}</td>
-    </tr>
-    </tbody>
-  </table>
-</div>
-
-
-</div>
-
-</div>
-<!-- FINE CONTAINER-->

@@ -10,6 +10,8 @@ import { MoviesApiService } from '../../services/moviesapi.service';
 import { CommentsInterface } from '../../models/comments.model';
 import { VERSION } from '@angular/core';
 import { MovieRatingsArrayInterface, MovieRatingsInterface } from 'src/app/models/movie-ratings.model';
+//import { LoginService } from '../../services/login/login.service';
+import { LoginService } from 'src/app/services/login/login.service';
 
 @Component({
   selector: 'app-movie-api-details',
@@ -19,6 +21,7 @@ import { MovieRatingsArrayInterface, MovieRatingsInterface } from 'src/app/model
 export class MovieApiDetailsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private movieApiService: MoviesApiService,
+    public loginService:LoginService,
     private pictureService: ApiPictureService, private router: Router, private dataService: DataService,
     private commentsService: CommentsService, private movieRatingService: MovieRatingService) { }
 
@@ -68,8 +71,8 @@ export class MovieApiDetailsComponent implements OnInit {
     this.getMovieRating();
     this.getEntries();
     this.getMovies();
-    
-    
+
+
   }
 
   // Funzione che prende il campo scelto nel form Film da vedere e lo aggiunge al database The Net Fish
