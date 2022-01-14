@@ -1,0 +1,47 @@
+body {
+    margin:0;
+    margin-bottom: 10%;
+  }
+  
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .inputError{
+    background-color: rgb(218, 56, 56);
+  }
+  
+  .form-control {
+    font-family: "DK Lemon Yellow Sun";
+    background-color: #f6f6f6 ;
+    border: solid 2px#b1afaf
+  }
+  
+  .form-control-lg {
+    font-family: "Poppins", sans-serif;
+  }
+  
+  input {
+    text-align: center;
+    font-size: 15px;
+    padding: 26px 32px;
+    background: none;;
+  }
+  
+
+
+  .text-body{
+    color: white;
+  }
+  
+  a{
+    color:#7d7e80;
+  }
+  .inputError{
+    font-size: 12px;
+    color:rgb(244, 134, 17);
+    background: none;
+  }
+  

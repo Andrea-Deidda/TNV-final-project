@@ -21,6 +21,7 @@ export class DataService {
 
   addEntry = (data: MovieData) => {
     return this.http.post<MovieData>(this.baseURL, {
+      "id": data.id,
       "name": data.name,
       "cast": data.cast,
       "director": data.director,
@@ -28,7 +29,11 @@ export class DataService {
       "rated": data.rated,
       "reviews": data.reviews,
       "evaluation": data.evaluation,
-      "releaseDate": data.releaseDate
+      "releaseDate": data.releaseDate,
+      "user_id": data.user_id,
+      "movie_id": data.movie_id,
+      "seen": data.seen,
+      "must_see": data.must_see,
     });
   };
 
@@ -46,7 +51,11 @@ export class DataService {
       "rated": data.rated,
       "reviews": data.reviews,
       "evaluation": data.evaluation,
-      "releaseDate": data.releaseDate
+      "releaseDate": data.releaseDate,
+      "user_id": data.user_id,
+      "movie_id": data.movie_id,
+      "seen": data.seen,
+      "must_see": data.must_see
     });
   };
 

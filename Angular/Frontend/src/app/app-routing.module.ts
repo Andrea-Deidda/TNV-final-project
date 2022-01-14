@@ -10,6 +10,7 @@ import { TheMovieApiComponent } from './routes/the-movie-api/the-movie-api.compo
 import { MoviesApiComponent } from './routes/movies-api/movies-api.component';
 import { MovieApiDetailsComponent } from './routes/movie-api-details/movie-api-details.component';
 import { LoginPageComponent } from './routes/login-page/login-page.component';
+import { RegistrationComponent } from './routes/registration/registration.component';
 
 
 
@@ -25,7 +26,8 @@ const routes: Routes = [
   { path: "themovieapi", component: TheMovieApiComponent},
   { path: "movieapi", component:MoviesApiComponent},
   { path: "movieApiDetails/:id", component: MovieApiDetailsComponent},
-  { path: "login-page", component:LoginPageComponent}
+  { path: "login-page", component:LoginPageComponent},
+  { path: "registration", component:RegistrationComponent}
 ];
 
 @NgModule({
