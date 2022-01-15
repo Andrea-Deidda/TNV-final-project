@@ -1,8 +1,9 @@
 package com.thenetvalue.utenti.service;
 
 import com.thenetvalue.utenti.dao.UserRepositoryDAO;
+import com.thenetvalue.utenti.model.Login;
+import com.thenetvalue.utenti.model.LoginCredentials;
 import com.thenetvalue.utenti.model.User;
-import com.thenetvalue.utenti.security.SecurityConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -26,8 +27,8 @@ public class UserService {
     //Aggiunge utente
     public String addUser(User user){
 
-        //String encodedPassword = this.passwordEncoder.encode(user.getPassword()); //test crypt password
-        //user.setPassword(encodedPassword);
+        String encodedPassword = this.passwordEncoder.encode(user.getPassword()); //test crypt password
+        user.setPassword(encodedPassword);
 
         User result = userDAO.save(user);       
         if (result!=null && result.getId() != 0){
@@ -71,7 +72,16 @@ public class UserService {
     }
 
     //Visualizza l'utente con lo username passato
-    public User getUserByUsername(String username) {
+    public Login login(LoginCredentials loginCredentials) {
+        User userFound = userDAO.findByUsername(loginCredentials.getUsername());
+        if (userFound.getUsername() != null) {
+            BCryptPasswordEncoder b = new BCryptPasswordEncoder();
+            Boolean matches = b.matches(loginCredentials.getPassword(),userFound.getPassword() );
+            return new Login(userFound.getUsername(), matches);
+        }
+        return new Login(" ", false);
+    }
+        public User getUserByUsername(String username) {
         return userDAO.findByUsername(username);
     }
 
@@ -79,4 +89,5 @@ public class UserService {
     public List<User> findAllByUsernameContaining(String partialUsername) {
         return userDAO.findAllByUsernameContaining(partialUsername);
     }
+
 }

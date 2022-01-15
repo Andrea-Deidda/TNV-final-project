@@ -26,7 +26,7 @@ const routes: Routes = [
   { path: "themovieapi", component: TheMovieApiComponent},
   { path: "movieapi", component:MoviesApiComponent},
   { path: "movieApiDetails/:id", component: MovieApiDetailsComponent},
-  { path: "login-page", component:LoginPageComponent},
+  { path: "login", component:LoginPageComponent},
   { path: "registration", component:RegistrationComponent}
 ];
 

@@ -1,5 +1,8 @@
 package com.thenetvalue.utenti.controller;
 
+//import com.thenetvalue.utenti.model.Login;
+import com.thenetvalue.utenti.model.Login;
+import com.thenetvalue.utenti.model.LoginCredentials;
 import com.thenetvalue.utenti.model.User;
 import com.thenetvalue.utenti.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +33,12 @@ public class UserController {
     public User getUserById(@PathVariable("id") int id){    //PathVariable=Associare l'id del GetMapping all'id del nostro utente
         return userService.getUser(id);
     }
-
-    @GetMapping("/username/{username}")
+    @RequestMapping(value = "/login", method=RequestMethod.POST)
+    @CrossOrigin(origins = "*")
+    public Login login(@RequestBody LoginCredentials loginSend){    //Cerca l'utente tramite l'username
+        return userService.login(loginSend);
+    }
+    @RequestMapping(value = "/username/{username}", method=RequestMethod.GET)
     @CrossOrigin(origins = "*")
     public User getUserByUsername(@PathVariable("username") String username){    //Cerca l'utente tramite l'username
         return userService.getUserByUsername(username);
@@ -47,13 +54,6 @@ public class UserController {
     public Iterable<User> allUsers(){
         return userService.allUsers();
     }
-
-    //@CrossOrigin(origins = "http://localhost:4200")     //NUOVA RIGA
-    @GetMapping("/login")
-    public String login(){
-        return "Authenticated successfully";
-    }
-
     @PutMapping("/{id}")
     public String updateUser(@PathVariable("id") int id, @RequestBody User user){
         return userService.updateUser(id,user);
