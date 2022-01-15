@@ -21,8 +21,7 @@ export class RegistrationService {
     "surname": newUser.surname,
     "email": newUser.email,
     "username": newUser.username,
-    "password": newUser.password,
-    "enabled": newUser.enabled,
+    "password": newUser.password
     }),{headers})
   }
 

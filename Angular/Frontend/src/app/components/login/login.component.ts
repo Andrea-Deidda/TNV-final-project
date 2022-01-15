@@ -43,7 +43,8 @@ export class LoginComponent implements OnInit {
       this.loginService.login(loginToSend).subscribe(response => {
         this.userFound = response;
         var match = this.userFound.match;
-        if (match) {
+        var validation = this.userFound.validation;
+        if (match && validation) {
           sessionStorage.setItem('username', this.userFound.username);
           this.invalidLogin = false;
           sessionStorage.setItem('isLoggedIn', 'true');
@@ -53,7 +54,7 @@ export class LoginComponent implements OnInit {
             });
 
         }
-        else {
+        else if (!(match && validation)) {
           console.log("Autenticazione fallita");
           this.passwordErrata = true;
         }

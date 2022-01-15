@@ -60,8 +60,7 @@ export class LoginService {
       "surname": newUser.surname,
       "email": newUser.email,
       "username": newUser.username,
-      "password": newUser.password,
-      "enabled": newUser.enabled,
+      "password": newUser.password
     }), { headers })
   }
   //Elimina l'utente con l'id passato

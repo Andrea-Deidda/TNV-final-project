@@ -37,7 +37,6 @@ export class RegistrationComponent implements OnInit {
 
    //ccontrollo spunta termini e condizioni
    terms:string;
-   termsOk=true;
    isChecked=false;
    getUserFlag=false;
 
@@ -50,7 +49,7 @@ export class RegistrationComponent implements OnInit {
   }
     //Visualizza tutti gli utenti
     getUsersList(){
-      this.userService.getUsers("admin","admin").subscribe(
+      this.userService.getUsers().subscribe(
         response => {
           this.users = response;
           this.getUserFlag=true;
@@ -90,7 +89,7 @@ export class RegistrationComponent implements OnInit {
     } // true
   }
     //check su username doppio
-  checkUsername(form :NgForm):any{ 
+  checkUsername(form :NgForm):any{
     if(this.getUserFlag){
     this.username = form.form.value.username;
       for(let i=0; i<this.users.length;i++){
@@ -103,7 +102,7 @@ export class RegistrationComponent implements OnInit {
   }
 
 //check su email
-    checkMailExist(form :NgForm):any{ 
+    checkMailExist(form :NgForm):any{
       if(this.getUserFlag){
       this.email = form.form.value.email;
         for(let i=0; i<this.users.length;i++){
@@ -117,7 +116,7 @@ export class RegistrationComponent implements OnInit {
     }
 
   //Crea un nuovo utente in base ai dati inseriti in input
-  createUser(form : NgForm): void {/*
+  createUser(form : NgForm): void {
     this.usernameExist=true;
     let passMatched = this.checkPassword(form); //controllo password metching
     let emailChecked = this.checkEmail(form);   //controllo email
@@ -139,7 +138,6 @@ export class RegistrationComponent implements OnInit {
         if(passMatched){  //se le password inserite corrispondono
 
           this.newUser = form.form.value;
-          this.newUser.enabled=1;
           this.registrationService.addUser(this.newUser,"admin","admin").subscribe( results => {
             console.log("Password valida",results);
             },
@@ -152,7 +150,6 @@ export class RegistrationComponent implements OnInit {
           this.emailOk=true;
           this.passwordOk=false;
           this.usernameOk=true;
-          this.termsOk=true;
           this.usernameExist=true;
           this.usernameAlreadyExist=false;
           console.log("password errata, Riprova");
@@ -160,34 +157,27 @@ export class RegistrationComponent implements OnInit {
 
     }else{  //username admin
       this.emailOk=true;
-      this.termsOk=true;
       this.usernameOk=false;
       this.usernameExist=true;
       console.log("lo username non puo contenere il termine 'admin'")
     }
   }
     else{
-      this.termsOk=true;
       this.usernameExist=false;
       this.emailOk=true;
       this.usernameAlreadyExist=false;
       console.log("  this.usernameExist=false",   this.usernameExist);
 
     }}else{
-      this.termsOk=true;
       this.emailAlreadyExist=false;
       console.log("EMAIL esistente");
     }
    }
    else{
-    this.termsOk=true;
     this.emailOk=false;
     this.usernameExist=true;
     console.log("Email Errata, Riprova!");
    }
-}else{
-    this.termsOk=false;
-    console.log("Devi accettare i termini e le condizioni");
-    }*/
+}
 }
 }

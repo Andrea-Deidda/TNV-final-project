@@ -77,9 +77,11 @@ public class UserService {
         if (userFound.getUsername() != null) {
             BCryptPasswordEncoder b = new BCryptPasswordEncoder();
             Boolean matches = b.matches(loginCredentials.getPassword(),userFound.getPassword() );
-            return new Login(userFound.getUsername(), matches);
+            return new Login(userFound.getUsername(), matches, true);
         }
-        return new Login(" ", false);
+        else {
+            return new Login(" ", false, false);
+        }
     }
         public User getUserByUsername(String username) {
         return userDAO.findByUsername(username);

@@ -14,8 +14,6 @@ public class User {
     private String username;
     private String password;
     private String email;
-    private String registrationDate;
-    private short enabled;
 
     public int getId() {
         return id;
@@ -61,20 +59,5 @@ public class User {
 
     public void setEmail(String email) {this.email = email; }
 
-    public short getEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(short enabled) {
-        this.enabled = enabled;
-    }
-
-    public String getRegistrationDate() {
-        return registrationDate;
-    }
-
-    public void setRegistrationDate(String registrationDate) {
-        this.registrationDate = registrationDate;
-    }
 }
 

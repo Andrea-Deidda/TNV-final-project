@@ -3,10 +3,20 @@ package com.thenetvalue.utenti.model;
 public class Login {
     private String username;
     private Boolean match;
+    private Boolean validation;
 
-    public Login(String username, Boolean match) {
+    public Login(String username, Boolean match, Boolean validation) {
         this.username = username;
         this.match = match;
+        this.validation = validation;
+    }
+
+    public Boolean getValidation() {
+        return validation;
+    }
+
+    public void setValidation(Boolean validation) {
+        this.validation = validation;
     }
 
     public String getUsername() {

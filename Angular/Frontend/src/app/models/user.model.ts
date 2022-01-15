@@ -4,7 +4,6 @@ export interface UserDataInterface{
   surname: string,
   username: string,
   password: string,
-  email: string,
-  enabled : number
+  email: string
 }
 
