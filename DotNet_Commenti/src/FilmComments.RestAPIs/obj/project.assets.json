@@ -871,19 +871,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Andrea\\.nuget\\packages\\": {}
+    "C:\\Users\\Ricky\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Andrea\\Documents\\Progetto_Finale_Team_For_Each-main\\DotNet_Commenti\\src\\FilmComments.RestAPIs\\FilmComments.RestAPIs.csproj",
+      "projectUniqueName": "C:\\Users\\Ricky\\VisualStudioProject\\new_final_project\\TNV-final-project\\DotNet_Commenti\\src\\FilmComments.RestAPIs\\FilmComments.RestAPIs.csproj",
       "projectName": "FilmComments.RestAPIs",
-      "projectPath": "C:\\Users\\Andrea\\Documents\\Progetto_Finale_Team_For_Each-main\\DotNet_Commenti\\src\\FilmComments.RestAPIs\\FilmComments.RestAPIs.csproj",
-      "packagesPath": "C:\\Users\\Andrea\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Andrea\\Documents\\Progetto_Finale_Team_For_Each-main\\DotNet_Commenti\\src\\FilmComments.RestAPIs\\obj\\",
+      "projectPath": "C:\\Users\\Ricky\\VisualStudioProject\\new_final_project\\TNV-final-project\\DotNet_Commenti\\src\\FilmComments.RestAPIs\\FilmComments.RestAPIs.csproj",
+      "packagesPath": "C:\\Users\\Ricky\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Ricky\\VisualStudioProject\\new_final_project\\TNV-final-project\\DotNet_Commenti\\src\\FilmComments.RestAPIs\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Andrea\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Ricky\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -897,11 +897,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Andrea\\Documents\\Progetto_Finale_Team_For_Each-main\\DotNet_Commenti\\src\\FilmComments.Core\\FilmComments.Core.csproj": {
-              "projectPath": "C:\\Users\\Andrea\\Documents\\Progetto_Finale_Team_For_Each-main\\DotNet_Commenti\\src\\FilmComments.Core\\FilmComments.Core.csproj"
+            "C:\\Users\\Ricky\\VisualStudioProject\\new_final_project\\TNV-final-project\\DotNet_Commenti\\src\\FilmComments.Core\\FilmComments.Core.csproj": {
+              "projectPath": "C:\\Users\\Ricky\\VisualStudioProject\\new_final_project\\TNV-final-project\\DotNet_Commenti\\src\\FilmComments.Core\\FilmComments.Core.csproj"
             },
-            "C:\\Users\\Andrea\\Documents\\Progetto_Finale_Team_For_Each-main\\DotNet_Commenti\\src\\FilmComments.DB\\FilmComments.DB.csproj": {
-              "projectPath": "C:\\Users\\Andrea\\Documents\\Progetto_Finale_Team_For_Each-main\\DotNet_Commenti\\src\\FilmComments.DB\\FilmComments.DB.csproj"
+            "C:\\Users\\Ricky\\VisualStudioProject\\new_final_project\\TNV-final-project\\DotNet_Commenti\\src\\FilmComments.DB\\FilmComments.DB.csproj": {
+              "projectPath": "C:\\Users\\Ricky\\VisualStudioProject\\new_final_project\\TNV-final-project\\DotNet_Commenti\\src\\FilmComments.DB\\FilmComments.DB.csproj"
             }
           }
         }
@@ -939,7 +939,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

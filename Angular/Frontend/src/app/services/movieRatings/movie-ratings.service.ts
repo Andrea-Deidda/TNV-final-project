@@ -35,7 +35,7 @@ export class MovieRatingService {
 
 
   getratingsByMovieId(movie_id: number) {
-    return this.http.get<any>(this.laravelUrl + "/api/movies" + movie_id );
+    return this.http.get<any>(this.laravelUrl + "/api/movies/" + movie_id );
   }
 
 

@@ -157,7 +157,7 @@ export class MovieApiDetailsComponent implements OnInit {
     this.ratingSubmit = form.form.value;
     console.log("RISULTATI RATING", this.ratingSubmit);
     this.movieRatingService.addMovieRating(this.ratingSubmit).subscribe(response => {
-
+    window.alert("Rating submitted, Tkank you!");
     },
       (err) => {
         console.log(err)
@@ -222,21 +222,22 @@ export class MovieApiDetailsComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-
+    var usernameLogged = sessionStorage.getItem('username');
+    this.loginService.getUserByUsername(usernameLogged).subscribe(response => {
     this.dataEntry = form.form.value;
     console.log(form);
     console.log(this.dataEntry);
     console.log(this.userId);
     console.log(this.id);
-    this.userId=3;
-    this.commentsService.addComment(this.userId, this.id, this.dataEntry).subscribe(
+    this.commentsService.addComment(response.id, this.id, this.dataEntry).subscribe(
       response => {
         console.log(response);
         this.router.navigate(["/movieApiDetails/791373"]);
       },
       error =>
         alert(error.error.message)
-    )
+    );
+    });
   }
 
   reloadPage() {
