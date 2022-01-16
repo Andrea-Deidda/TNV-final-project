@@ -11,6 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -25,19 +26,44 @@ public class UserService {
     }
 
     //Aggiunge utente
-    public String addUser(User user){
+    public String addUser(User user) {
+        boolean registered = false;
 
-        String encodedPassword = this.passwordEncoder.encode(user.getPassword()); //test crypt password
-        user.setPassword(encodedPassword);
+        if(userDAO.findByUsername(user.getUsername()) == null ){
 
-        User result = userDAO.save(user);       
-        if (result!=null && result.getId() != 0){
+            boolean contains1 = user.getEmail().contains("@");
+            boolean contains2 = user.getEmail().contains(".");
+
+
+            if(contains1 && contains2){
+                String encodedPassword = this.passwordEncoder.encode(user.getPassword()); //test crypt password
+                user.setPassword(encodedPassword);
+                userDAO.save(user);
+                registered = true;
+            }else{
+                return "Email non valida";
+            }
+        }else{
+            User userFound = new User();
+            userFound = userDAO.findByUsername(user.getUsername());
+
+            boolean equalsUsername = Objects.equals(userFound.getUsername(), user.getUsername());
+            boolean equalsEmail = Objects.equals(userFound.getEmail(), user.getEmail());
+
+            if (equalsUsername && !equalsEmail) {
+                return "Username già utilizzato";
+            } else if (equalsEmail && !equalsUsername) {
+                return "Email già utilizzata";
+            } else if(equalsUsername && equalsEmail){
+                return "Email e Username già utilizzati";
+            }
+        }
+        if(registered){
             return "Utente salvato correttamente";
         }else{
-            return "Errore nel salvataggio dell'utente";
+            return "Utente non registrato";
         }
     }
-    
     // Prende l'utente con l'id passato
     public User getUser(int id){
         Optional<User> optionalUser = userDAO.findById(id);

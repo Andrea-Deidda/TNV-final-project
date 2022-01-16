@@ -6,6 +6,8 @@ import com.thenetvalue.utenti.model.LoginCredentials;
 import com.thenetvalue.utenti.model.User;
 import com.thenetvalue.utenti.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,9 +25,11 @@ public class UserController {
     }
     @CrossOrigin(origins = "*")
     @PostMapping("/")
-    public String addUser(@RequestBody User user){  //RequestBody=tutto cio che mi passa dall'esterno va messo nell oggetto users
-
-        return userService.addUser(user);
+    public ResponseEntity<String> addUser(@RequestBody User user){  //RequestBody=tutto cio che mi passa dall'esterno va messo nell oggetto users
+        if (userService.addUser(user) == "Utente salvato correttamente") {
+            return ResponseEntity.ok().body("Utente salvato correttamente");
+        }
+        return new ResponseEntity<>(userService.addUser(user), HttpStatus.BAD_REQUEST);
     }
 
     @GetMapping("/{id}")

@@ -21,11 +21,15 @@ export class LoginService {
   constructor(private http: HttpClient) {
     const isLogged = sessionStorage.getItem("isLoggedIn") === 'true';
     this.isLoggedIn = new BehaviorSubject(isLogged);
-
   }
+
+  public saveLoggedIn(){
+    window.sessionStorage.setItem('isLoggedIn', 'true');
+  }
+
   //verifica se l'utente è loggato
   isUserLoggedIn() {
-    let user = sessionStorage.getItem('username')
+    let user = sessionStorage.getItem('isLoggedIn')
     //console.log(!(user === null))
     return !(user === null)
   }
@@ -43,7 +47,7 @@ export class LoginService {
   }
   //Preleva l'utente con lo username passato come parametro
   public getUserByUsername(username: string) {
-    return this.http.get<LoginData>(this.baseURL + "/username/" + username, { headers });
+    return this.http.get<UserDataInterface>(this.baseURL + "/username/" + username, { headers });
   }
   //Login
   public login(loginToSend : LoginSend) {

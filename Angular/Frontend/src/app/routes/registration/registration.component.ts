@@ -4,6 +4,9 @@ import { UserDataInterface } from './../../models/user.model';
 import { NgForm } from '@angular/forms';
 import { RegistrationService } from './../../services/registration/registration.service';
 import { Component, OnInit } from '@angular/core';
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
+import { SignUpInfo } from '../../models/SignUpInfo';
+
 
 @Component({
   selector: 'app-registration',
@@ -12,172 +15,97 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistrationComponent implements OnInit {
 
-  newUser : UserDataInterface;
+  newUser: SignUpInfo;
   users: UserDataInterface[]; //utti gli utenti
-  username:string;
+  username: string;
+  isSignedUpFailed = false;
+  emailError = false;
+  usernameError = false;
+  errorMessageUsername = "";
+  errorMessageEmail = "";
 
-  usernameOk=true;
-  usernameExist=true;
-  usernameAlreadyExist=false;
-
-  //variabile verifica mail
-  emailExist=true;
-  emailAlreadyExist=false;
-
-  found:UserDataInterface[];
-  userFound:UserDataInterface[];
   //variabili per il controllo password "uguale"
-  password:string;
-  confirmPassword:string;
-  passwordOk=true;
+  password: string;
+  confirmPassword: string;
+  passwordOk = true;
 
-   //controllo email valida
-   email:string;
-   emailOk=true;
+  passwordCryptata: string; //contiente la password inserita dall'utente ma cryptata
 
-   //ccontrollo spunta termini e condizioni
-   terms:string;
-   isChecked=false;
-   getUserFlag=false;
-
-   passwordCryptata:string; //contiente la password inserita dall'utente ma cryptata
-
-  constructor(private registrationService : RegistrationService, private router:Router, private userService: LoginService) { }
+  constructor(private registrationService: RegistrationService, private router: Router, private userService: LoginService) { }
 
   ngOnInit(): void {
-    this.getUsersList();
+
   }
-    //Visualizza tutti gli utenti
-    getUsersList(){
-      this.userService.getUsers().subscribe(
-        response => {
-          this.users = response;
-          this.getUserFlag=true;
-        },
-        error => console.log(error)
-      )
-    }
+
   //metodo di verifica click checkbox termini e condizioni
-  click(ev){
- }
+  click(ev) {
+  }
   //verifica se le password inserite dall'utente sono uguali
-  checkPassword(form : NgForm):boolean{
-    this.password=form.form.value.password;
-    this.confirmPassword=form.form.value.confirmPassword;
-    if(this.password !== this.confirmPassword){
+  checkPassword(form: NgForm): boolean {
+    this.password = form.form.value.password;
+    this.confirmPassword = form.form.value.confirmPassword;
+    if (this.password !== this.confirmPassword) {
       return false
-      }
-    else{
-      this.passwordCryptata=this.password;
+    }
+    else {
+      this.passwordCryptata = this.password;
       //this.password=
       return true
     }
   }
-  //verifica se l'email inserita è in un formato valido
-  checkEmail(form : NgForm):boolean{
-
-    this.email=form.form.value.email;
-    const at = "@";
-    const dotNet = ".";
-    if(this.email.includes(at) && this.email.includes(dotNet)){
-      console.log("Email valida! Contains: '@' and '.'");
-      return true;
-    }
-      else{
-        console.log("Email non valida");
-        return false;
-    } // true
-  }
-    //check su username doppio
-  checkUsername(form :NgForm):any{
-    if(this.getUserFlag){
-    this.username = form.form.value.username;
-      for(let i=0; i<this.users.length;i++){
-
-        if(this.username===this.users[i].username){
-          this.usernameAlreadyExist=true;
-        }
-      }
-    }
-  }
-
-//check su email
-    checkMailExist(form :NgForm):any{
-      if(this.getUserFlag){
-      this.email = form.form.value.email;
-        for(let i=0; i<this.users.length;i++){
-
-          if(this.email===this.users[i].email){
-            console.log("this.users[i].email ", this.users[i].email);
-            this.emailAlreadyExist=true;
-          }
-        }
-      }
-    }
 
   //Crea un nuovo utente in base ai dati inseriti in input
-  createUser(form : NgForm): void {
-    this.usernameExist=true;
+  createUser(form: NgForm): void {
     let passMatched = this.checkPassword(form); //controllo password metching
-    let emailChecked = this.checkEmail(form);   //controllo email
-    form.form.value.password=this.password;
-    this.checkUsername(form);                   //controlla se username è esistente
-    this.checkMailExist(form);                  //controlla se l'email è già presente
+    if (passMatched) {
+      this.newUser = new SignUpInfo(
+        form.form.value.name,
+        form.form.value.surname,
+        form.form.value.username,
+        form.form.value.email,
+        form.form.value.password
+      );
 
-  if(this.isChecked){ //se i termini e le condizioni sono spuntate(accettate)
-    this.usernameExist=true;
-
-   if(emailChecked){  //se l'email è controllata
-
-    if(this.emailAlreadyExist==false){
-    if(this.usernameAlreadyExist==false){
-        this.usernameExist=true;
-
-     if(this.username!= "admin" && this.username!= "Admin"){    //se lo username è controllato
-
-        if(passMatched){  //se le password inserite corrispondono
-
-          this.newUser = form.form.value;
-          this.registrationService.addUser(this.newUser,"admin","admin").subscribe( results => {
-            console.log("Password valida",results);
-            },
-            error=>{
-              console.log(error);
-            });
-            this.router.navigate(['/login']);
+      console.log(this.newUser);
+      this.registrationService.addUser(this.newUser, "admin", "admin").subscribe(response => {
+          this.isSignedUpFailed = false;
+          this.router.navigate(['/login'])
+            .then(() => {
+              window.location.reload();
+            })
+      },
+      error=>{
+        console.log(error);
+        this.isSignedUpFailed = true;
+        var stringCheck = error.error;
+        if (stringCheck == "Username già utilizzato") {
+          this.emailError = false;
+          this.usernameError = true;
         }
-        else{ //pass metched
-          this.emailOk=true;
-          this.passwordOk=false;
-          this.usernameOk=true;
-          this.usernameExist=true;
-          this.usernameAlreadyExist=false;
-          console.log("password errata, Riprova");
+        if (stringCheck == "Email già utilizzata") {
+          this.emailError = true;
+          this.usernameError = false;
+        }
+        if (stringCheck == "Email e Username già utilizzati") {
+          this.emailError = true;
+          this.usernameError = true;
         }
 
-    }else{  //username admin
-      this.emailOk=true;
-      this.usernameOk=false;
-      this.usernameExist=true;
-      console.log("lo username non puo contenere il termine 'admin'")
+        if(this.emailError && this.usernameError){
+          this.errorMessageUsername = "Username già utilizzato";
+          this.errorMessageEmail = "Email già utilizzata";
+        }
+        if(!this.emailError && this.usernameError){
+          this.errorMessageUsername = "Username già utilizzato";
+        }
+        if(this.emailError && !this.usernameError){
+          this.errorMessageEmail = "Email già utilizzata";
+        }
+      });
+
+    } else {
+      this.isSignedUpFailed = true;
     }
+
   }
-    else{
-      this.usernameExist=false;
-      this.emailOk=true;
-      this.usernameAlreadyExist=false;
-      console.log("  this.usernameExist=false",   this.usernameExist);
-
-    }}else{
-      this.emailAlreadyExist=false;
-      console.log("EMAIL esistente");
-    }
-   }
-   else{
-    this.emailOk=false;
-    this.usernameExist=true;
-    console.log("Email Errata, Riprova!");
-   }
-}
-}
 }

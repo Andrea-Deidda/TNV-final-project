@@ -77,76 +77,81 @@ export class MovieApiDetailsComponent implements OnInit {
 
   // Funzione che prende il campo scelto nel form Film da vedere e lo aggiunge al database The Net Fish
   onSeen(form: NgForm) {
-    
-    this.movieFilm = form.form.value;
+    var usernameLogged = sessionStorage.getItem('username');
+    this.loginService.getUserByUsername(usernameLogged).subscribe(response => {
+      this.movieFilm = form.form.value;
+      console.log("form.form.value ", form.form.value);
+      console.log(this.id);
+      this.movieFilm.movie_id = this.id;
+      this.movieFilm.user_id = response.id;
+      this.movieFilm.name = this.movieDetailsEntry.title;
+      this.movieFilm.evaluation = this.movieDetailsEntry.vote_average;
+      this.movieFilm.reviews = this.movieDetailsEntry.overview;
+      this.movieFilm.cast = "null";
+      this.movieFilm.director = "null"
+      this.movieFilm.rated = false;
 
-    console.log("form.form.value ", form.form.value);
-    console.log(this.id);
-    this.movieFilm.movie_id = this.id
-    this.movieFilm.user_id = 1
-    this.movieFilm.name = this.movieDetailsEntry.title;
-    this.movieFilm.evaluation = this.movieDetailsEntry.vote_average;
-    this.movieFilm.reviews = this.movieDetailsEntry.overview;
-    this.movieFilm.cast = "null";
-    this.movieFilm.director = "null"
-    this.movieFilm.rated = false;
+      if (form.form.value.seen === 'my watched movies') {
+        this.movieFilm.seen = true;
+        this.movieFilm.must_see = false
 
-    if (form.form.value.seen === 'my watched movies') {
-      this.movieFilm.seen = true;
-      this.movieFilm.must_see = false
-
-    } else if (form.form.value.seen === 'my Must See movies') {
-      this.movieFilm.must_see = true;
-      this.movieFilm.seen = false;
-    };
+      } else if (form.form.value.seen === 'my Must See movies') {
+        this.movieFilm.must_see = true;
+        this.movieFilm.seen = false;
+      };
 
 
-    for (let i = 0; i < this.movies.length; i++) {
-      if (this.movies[i].movie_id == this.id) {
-        console.log("INIZIA IL FOR");
-        this.flag = true;
-        this.movieFilm.id = this.movies[i].id
-        this.movieFilm.name = this.movies[i].name;
-        console.log("this.movieFilm.id  ", this.movieFilm.id)
-        console.log("FINISCE IL FOR");
+      for (let i = 0; i < this.movies.length; i++) {
+        if (this.movies[i].movie_id == this.id) {
+          console.log("INIZIA IL FOR");
+          this.flag = true;
+          this.movieFilm.id = this.movies[i].id
+          this.movieFilm.name = this.movies[i].name;
+          console.log("this.movieFilm.id  ", this.movieFilm.id)
+          console.log("FINISCE IL FOR");
 
-        break;
+          break;
 
-      } else {
-        this.flag = false;
+        } else {
+          this.flag = false;
+        }
+      };
+
+      // Add o PUT se il film è già presente nel BD o meno
+      if (this.flag == true) {
+        this.dataService.editEntry(this.movieFilm).subscribe(response => {
+          window.alert("Movie added to your list, Tkank you!");
+        },
+          (err) => {
+            console.log("mah");
+          }
+        )
+        console.log("FINISCE LA EDIT");
       }
-    };
 
-    // Add o PUT se il film è già presente nel BD o meno
-    if (this.flag == true) {
-      this.dataService.editEntry(this.movieFilm).subscribe(response => {
-        window.alert("Movie added to your list, Tkank you!");
-      },
-        (err) => {
-          console.log("mah");
-        }
-      )
-      console.log("FINISCE LA EDIT");
-    }
+      else {
+        console.log(this.movieFilm);
 
-    else {
-      console.log(this.movieFilm);
+        this.dataService.addEntry(this.movieFilm).subscribe(response => {
+          window.alert("Movie added to your list, Tkank you!");
+        },
+          (err) => {
+            console.log("mah2");
+          }
+        )
+        this.flag == true;
+        console.log("FINISCE LA ADD");
+      }
+    })
 
-      this.dataService.addEntry(this.movieFilm).subscribe(response => {
-        window.alert("Movie added to your list, Tkank you!"); 
-      },
-        (err) => {
-          console.log("mah2");
-        }
-      )
-      this.flag == true;
-      console.log("FINISCE LA ADD");
-    }
+
    };
 
   onSubmitRating(form: NgForm) {
+    var usernameLogged = sessionStorage.getItem('username');
+    this.loginService.getUserByUsername(usernameLogged).subscribe(response => {
     form.form.value.movie_id = this.movieDetailsEntry.id,
-      form.form.value.user_id = 1
+      form.form.value.user_id = response.id;
     //form.form.value.currentRating = parseInt(form.form.value.currentRating);
     form.form.value.movie_rating = parseInt(form.form.value.movie_rating);
     this.ratingSubmit = form.form.value;
@@ -158,19 +163,20 @@ export class MovieApiDetailsComponent implements OnInit {
         console.log(err)
       }
     )
+  })
   }
-  
+
   // chiama e alloca l ordine corretto degli indirizzi per recupero immagini da api
   getMovieApiDetails() {
     this.movieApiService.getMovieById(this.id).subscribe((res: any) => {
       this.movieDetailsEntry = res;
-      this.imagePath = "https://image.tmdb.org/t/p/w780" + this.movieDetailsEntry.backdrop_path 
+      this.imagePath = "https://image.tmdb.org/t/p/w780" + this.movieDetailsEntry.backdrop_path
       console.log(this.movieDetailsEntry);
     })
   }
 
   // funzione protipo di supporto alternativa per le immagini
-  /*getMoviePosters() { 
+  /*getMoviePosters() {
     this.pictureService.getMoviePics(this.movieDetailsEntry.backdrop_path).subscribe((res: any) => {
       this.movieDetailsEntry = res;
       this.pathComplete = this.combinePath(this.mainUrl, this.movieDetailsEntry.backdrop_path)

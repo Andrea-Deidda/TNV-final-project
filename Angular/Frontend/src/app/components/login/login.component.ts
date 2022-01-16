@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
         if (match && validation) {
           sessionStorage.setItem('username', this.userFound.username);
           this.invalidLogin = false;
-          sessionStorage.setItem('isLoggedIn', 'true');
+          this.loginService.saveLoggedIn();
           this.router.navigate(['/movieapi'])
             .then(() => {
               window.location.reload();

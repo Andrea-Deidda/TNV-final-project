@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserDataInterface } from '../../models/user.model';
+import { SignUpInfo } from '../../models/SignUpInfo';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,18 +13,17 @@ export class RegistrationService {
 
   constructor(private http: HttpClient) { }
 
-  addUser = (newUser: UserDataInterface, username: string, password:string) =>{
+  addUser (newUser: SignUpInfo, username: string, password:string): Observable<string> {
 
-    const headers=new HttpHeaders({
-      'Content-Type':  'application/json',
-      Authorization : 'Basic '+ btoa(username+":"+password)});  //btoa= binari to ask
-    return this.http.post<UserDataInterface>(this.baseURL +"/", JSON.stringify({
-    "name": newUser.name,
-    "surname": newUser.surname,
-    "email": newUser.email,
-    "username": newUser.username,
-    "password": newUser.password
-    }),{headers})
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        "Access-Control-Allow-Origin": "*",
+        Authorization : 'Basic '+ btoa(username+":"+password),  //btoa= binari to ask
+      }),responseType: 'text' as 'json'
+    };
+
+    return this.http.post<string>(this.baseURL +"/", newUser, httpOptions)
   }
 
 }
