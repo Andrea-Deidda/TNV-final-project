@@ -18,9 +18,9 @@ import { RegistrationComponent } from './routes/registration/registration.compon
 const routes: Routes = [
   { path: "", redirectTo : '/landingPage', pathMatch: 'full' },
   { path: "dashboard", component : DashboardComponent },
-  { path: "add", component : AddComponent },
-  { path: "details/:id", component : DetailsComponent },
-  { path: "edit/:id", component: EditComponent },
+  //{ path: "add", component : AddComponent },
+  //{ path: "details/:id", component : DetailsComponent },
+ // { path: "edit/:id", component: EditComponent },
   { path: "landingPage", component: WelcomeComponent},
   { path: "filterbygenre", component: FilterByGenreComponent},
   { path: "themovieapi", component: TheMovieApiComponent},

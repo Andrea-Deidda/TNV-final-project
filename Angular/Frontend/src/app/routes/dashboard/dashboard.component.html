@@ -8,16 +8,16 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Name</th>
-        <th scope="col">Director</th>
-        <th scope="col">Release Date</th>
+        <th scope="col">Comment</th>
+        <th scope="col">Rating</th>
       </tr>
     </thead>
     <tbody>
       <tr class="pointer" *ngFor="let entry of movies ; let i = index" (click)="goToDetails(entry.id)">
         <th scope="row"> {{i + 1}}</th>
         <td>{{entry.name}}</td>
-        <td>{{entry.director}}</td>
-        <td>{{entry.releaseDate | date}}</td>
+        <td>{{entry.reviews}}</td>
+        <td>{{entry.evaluation}}</td>
       </tr>
     </tbody>
   </table>

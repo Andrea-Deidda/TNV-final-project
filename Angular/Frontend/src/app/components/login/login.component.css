@@ -7,7 +7,7 @@ html {
 
 body {
   font-family: "Poppins", sans-serif;
-  height: 100vh;
+
 }
 
 a {
@@ -37,6 +37,7 @@ h2 {
   width: 100%;
   min-height: 100%;
   padding: 20px;
+  position: static;
 }
 
 #formContent {
@@ -46,7 +47,7 @@ h2 {
   padding: 30px;
   width: 90%;
   max-width: 450px;
-  position: relative;
+  position: static;
   padding: 0px;
   -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
   box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);

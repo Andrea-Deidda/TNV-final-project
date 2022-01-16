@@ -58,9 +58,10 @@ export class LoginComponent implements OnInit {
           console.log("Autenticazione fallita");
           this.passwordErrata = true;
         }
-      }), err => {
+      }, err => {
         console.log(err);
-      }
+        this.passwordErrata = true;
+      });
     }
   }
 }

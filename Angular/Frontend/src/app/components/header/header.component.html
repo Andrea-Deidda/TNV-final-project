@@ -10,8 +10,6 @@
     <ul class="choice-container" id="menu">
       <li><a class="choice" [routerLink]="['/movieapi']">Home</a></li>
 
-      <li><a class="choice" [routerLink]="['/add']">Add</a></li>
-
       <li><a class="choice" [routerLink]="['/login']">Login</a></li>
     </ul>
   </div>
@@ -25,9 +23,8 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ms-auto">
         <li class="fas fa-home icons" [routerLink]="['/movieapi']"></li>
-        <li class="fas fa-plus icons" [routerLink]="['/add']"></li>
-        <li class="fas fa-user icons" [routerLink]="['/login']"></li>
-        <li class="fas fa-filter icons" [routerLink]="['/filterbygenre']"></li>
+        <li class="fas fa-user icons" [routerLink]="['/login']" *ngIf="!(loginService.isLoggedIn | async)" ></li>
+        <li class="fas fa-sign-out-alt icons" (click) = 'logout()' *ngIf="(loginService.isLoggedIn | async)" ></li>
       </ul>
     </div>
   </div>

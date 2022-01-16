@@ -68,7 +68,6 @@ export class MovieApiDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     this.getMovieApiDetails();
-    this.getMovieRating();
     this.getEntries();
     this.getMovies();
 
@@ -175,32 +174,7 @@ export class MovieApiDetailsComponent implements OnInit {
     })
   }
 
-  // funzione protipo di supporto alternativa per le immagini
-  /*getMoviePosters() {
-    this.pictureService.getMoviePics(this.movieDetailsEntry.backdrop_path).subscribe((res: any) => {
-      this.movieDetailsEntry = res;
-      this.pathComplete = this.combinePath(this.mainUrl, this.movieDetailsEntry.backdrop_path)
-      console.log(this.pathComplete)
-    }
-    )
-  }
-
-  // allegata a getMoviePosters()
-  combinePath(mainUrl: ApiPictureService, backdrop_path: string) {
-    return this.mainUrl + this.movieDetailsEntry.backdrop_path;
-  }*/
-
-  getMovieRating() {
-    this.movieRatingService.getratingsByMovieId(this.id).subscribe(
-      response => {
-        this.ratings = response;
-        this.ratingEntry = this.ratings.data[0];
-      },
-      error => console.log(error)
-    )
-  }
-
-  //-----------------------SEZIONE COMMENTI --------------------------//
+   //-----------------------SEZIONE COMMENTI --------------------------//
 
   getEntries() {
     this.commentsService.getComments().subscribe(
